@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,4 +10,10 @@ export class LoginComponent {
 
   senha!: string;
   usuario!: string;
+
+  constructor(private router: Router) {}
+
+  entrar() {
+    this.router.navigate(['/internacoes']);
+  }
 }
