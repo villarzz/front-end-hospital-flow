@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { InternacoesComponent } from './pages/internacoes/internacoes.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { HugeIconsModule } from './modules/huge-icons/huge-icons.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    InternacoesComponent
+    InternacoesComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HugeIconsModule
   ],
   providers: [
     provideClientHydration()

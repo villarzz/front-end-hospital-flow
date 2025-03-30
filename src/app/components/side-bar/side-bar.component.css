@@ -1,0 +1,31 @@
+.side-bar {
+  width: 25%;
+  height: 100vh;
+  background-color: #e7f3ff;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.side-bar__header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.logo {
+  background-image: url("../../../assets/logo.png");
+  background-size: cover;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+.side-bar__nav{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
