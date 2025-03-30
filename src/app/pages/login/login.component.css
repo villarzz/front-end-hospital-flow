@@ -1,0 +1,73 @@
+.login-page{
+  display: flex;
+}
+
+.image-container {
+  background-color: #c4e9ff;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.img {
+  background-image: url("../../../assets/hospital.png");
+  background-size: cover;
+  background-position: center;
+  width: 400px;
+  height: 400px;
+  display: block;
+}
+
+.title{
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+}
+
+.form-container {
+  background-color: #eaf7ff;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-title{
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: black;
+  margin-top: 100px;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  width: 100%;
+  margin-left: 50%;
+  margin-top: 35px;
+}
+
+.input{
+  width: 50%;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  padding-left: 10px;
+  margin-top: 20px;
+  background-color: white;
+}
+
+.esqueceu-senha{
+  font-size: 0.8rem;
+  color: black;
+  margin-top: 10px;
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-right: 50%;
+}

@@ -1,1 +1,21 @@
-<p>login works!</p>
+<div class="login-page">
+  <div class="image-container">
+    <h1 class="title">Hospital Flow</h1>
+    <span class="img"></span>
+    <p>Gestão eficiente para cada internação.</p>
+  </div>
+  <div class="form-container">
+    <h1 class="form-title">Login</h1>
+    <div class="input-container">
+      <label for="usuario">Usuário</label>
+      <input type="text" id="usuario" [(ngModel)]="usuario" class="input" placeholder="Digite seu usuário" />
+    </div>
+    <div class="input-container">
+      <label for="usuario">Senha</label>
+      <input type="password" id="usuario" [(ngModel)]="senha" class="input" placeholder="Digite sua senha" />
+    </div>
+    <div class="esqueceu-senha">
+      <p>Esqueceu sua senha?</p>
+    </div>
+  </div>
+</div>
