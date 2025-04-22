@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { InternacoesComponent } from './pages/internacoes/internacoes.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HugeIconsModule } from './modules/huge-icons/huge-icons.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HugeIconsModule } from './modules/huge-icons/huge-icons.module';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HugeIconsModule
+    HugeIconsModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()
