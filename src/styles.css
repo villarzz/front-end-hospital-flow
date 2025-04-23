@@ -39,7 +39,7 @@ ul, ol {
   list-style: none;
 }
 
-button, input, textarea, select {
+button, textarea, select {
   font: inherit;
   border: none;
   background: none;

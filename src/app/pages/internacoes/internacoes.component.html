@@ -1,3 +1,27 @@
 <div class="internacoes">
-  <app-side-bar></app-side-bar>
+  <app-side-bar class="sidebar"></app-side-bar>
+  <div class="main">
+    <h1>Internações</h1>
+    <form>
+      <div class="form-group">
+        <div class="input">
+          <label for="atendimento">Atendimento</label>
+          <input type="number" id="atendimento" name="atendimento" required />
+        </div>
+        <div class="input">
+          <label for="paciente">Nome do paciente</label>
+          <input type="text" id="paciente" name="paciente" required />
+        </div>
+        <div class="input">
+          <label for="convenio">Convênio</label>
+          <select>
+            <option value="unimed">Unimed</option>
+            <option value="bradesco">Bradesco</option>
+            <option value="sulamerica">SulAmérica</option>
+            <option value="amil">Amil</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

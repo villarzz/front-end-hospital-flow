@@ -7,7 +7,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
 import { InternacoesComponent } from './pages/internacoes/internacoes.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { HugeIconsModule } from './modules/huge-icons/huge-icons.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HugeIconsModule,
     HttpClientModule
   ],
   providers: [
