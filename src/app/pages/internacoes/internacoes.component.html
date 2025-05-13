@@ -6,22 +6,78 @@
       <div class="form-group">
         <div class="input">
           <label for="atendimento">Atendimento</label>
-          <input type="number" id="atendimento" name="atendimento" required />
+          <input
+            type="number"
+            id="atendimento"
+            name="atendimento"
+            [(ngModel)]="atendimento"
+          />
         </div>
+
         <div class="input">
           <label for="paciente">Nome do paciente</label>
-          <input type="text" id="paciente" name="paciente" required />
+          <input
+            type="text"
+            id="paciente"
+            name="paciente"
+            [(ngModel)]="paciente"
+          />
         </div>
+
         <div class="input">
           <label for="convenio">Convênio</label>
-          <select>
+          <select [(ngModel)]="convenio" name="convenio">
             <option value="unimed">Unimed</option>
             <option value="bradesco">Bradesco</option>
             <option value="sulamerica">SulAmérica</option>
             <option value="amil">Amil</option>
           </select>
         </div>
+
+        <div class="input">
+          <label for="statusInternacao">Status da Internação</label>
+          <select [(ngModel)]="statusInternacao" name="statusInternacao">
+            <option value="1">Internado</option>
+            <option value="2">Alta</option>
+            <option value="3">Transferido</option>
+            <option value="4">Óbito</option>
+          </select>
+        </div>
+
+        <div class="btn-container">
+          <button class="btn-buscar" (click)="getInternacoes()">Buscar</button>
+        </div>
       </div>
     </form>
+
+    <div class="tabela-container">
+      <table class="tabela-hospitalar">
+        <thead>
+          <tr>
+            <th>Atendimento</th>
+            <th>Data Início</th>
+            <th>Data Fim</th>
+            <th>Nome do Paciente</th>
+            <th>Convênio</th>
+            <th>Status Internação</th>
+            <th>Acomodação</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="internacoes.length > 0">
+          <tr *ngFor="let internacao of internacoes">
+            <td>{{ internacao.atendimento }}</td>
+            <td>{{ internacao.dataInicio }}</td>
+            <td>{{ internacao.dataFim }}</td>
+            <td>{{ internacao.nomePaciente }}</td>
+            <td>{{ internacao.convenio }}</td>
+            <td>{{ internacao.statusInternacaoDescricao }}</td>
+            <td>{{ internacao.acomodacaoDescricao }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="error-container" *ngIf="internacoes.length == 0">
+        <p class="error-text">Não foi encontrado nenhum registro!</p>
+      </div>
+    </div>
   </div>
 </div>

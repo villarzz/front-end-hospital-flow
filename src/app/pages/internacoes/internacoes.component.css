@@ -28,12 +28,12 @@ h1 {
 .input {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 input,
 select {
   width: 100%;
-  max-width: 400px;
   padding: 10px;
   border: 2px solid #d0d7de;
   border-radius: 8px;
@@ -52,4 +52,76 @@ input:focus {
   border-color: #4da6ff;
   background-color: #fff;
   box-shadow: 0 0 0 4px rgba(77, 166, 255, 0.2);
+}
+
+.tabela-container {
+  max-width: 1140px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tabela-hospitalar {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 15px;
+}
+
+.tabela-hospitalar th,
+.tabela-hospitalar td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tabela-hospitalar thead {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.tabela-hospitalar tbody tr:hover {
+  background-color: #f0f8ff;
+  transition: background-color 0.3s ease;
+}
+
+.btn-buscar {
+  background-color: #007bff; /* Azul hospitalar suave */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 50px;
+}
+
+.btn-buscar:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.error-text {
+  font-size: 14px;
+  margin-top: 5px;
+  text-align: center;
 }
