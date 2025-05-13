@@ -8,12 +8,14 @@ import { FormsModule } from '@angular/forms';
 import { InternacoesComponent } from './pages/internacoes/internacoes.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PacientesComponent } from './pages/pacientes/pacientes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     InternacoesComponent,
+    PacientesComponent,
     SideBarComponent
   ],
   imports: [

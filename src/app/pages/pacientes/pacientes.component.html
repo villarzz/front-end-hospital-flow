@@ -1,0 +1,83 @@
+<div class="internacoes">
+  <app-side-bar class="sidebar"></app-side-bar>
+  <div class="main">
+    <h1>Pacientes</h1>
+    <form>
+      <div class="form-group">
+        <div class="input">
+          <label for="nome">Nome</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            [(ngModel)]="nome"
+          />
+        </div>
+
+        <div class="input">
+          <label for="dataNascimento">Data de Nascimento</label>
+          <input
+            type="text"
+            id="dataNascimento"
+            name="dataNascimento"
+            [(ngModel)]="dataNascimento"
+          />
+        </div>
+
+        <div class="input">
+          <label for="cpf">CPF</label>
+          <input
+            type="text"
+            id="cpf"
+            name="cpf"
+            [(ngModel)]="cpf"
+          />
+        </div>
+
+        <div class="input">
+          <label for="convenio">Convênio</label>
+          <select [(ngModel)]="convenio" name="convenio">
+            <option value="unimed">Unimed</option>
+            <option value="bradesco">Bradesco</option>
+            <option value="sulamerica">SulAmérica</option>
+            <option value="amil">Amil</option>
+          </select>
+        </div>
+
+        <div class="btn-container">
+          <button class="btn-buscar" (click)="postPaciente()">Buscar</button>
+        </div>
+      </div>
+    </form>
+
+    <div class="tabela-container">
+      <table class="tabela-hospitalar">
+        <thead>
+          <tr>
+            <th>Atendimento</th>
+            <th>Data Início</th>
+            <th>Data Fim</th>
+            <th>Nome do Paciente</th>
+            <th>Convênio</th>
+            <th>Status Internação</th>
+            <th>Acomodação</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="pacientes.length > 0">
+          <tr *ngFor="let paciente of pacientes">
+            <td>{{ paciente.atendimento }}</td>
+            <td>{{ paciente.dataInicio }}</td>
+            <td>{{ paciente.dataFim }}</td>
+            <td>{{ paciente.nomePaciente }}</td>
+            <td>{{ paciente.convenio }}</td>
+            <td>{{ paciente.statusInternacaoDescricao }}</td>
+            <td>{{ paciente.acomodacaoDescricao }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="error-container" *ngIf="pacientes.length == 0">
+        <p class="error-text">Não foi encontrado nenhum registro!</p>
+      </div>
+    </div>
+  </div>
+</div>
