@@ -54,24 +54,18 @@
       <table class="tabela-hospitalar">
         <thead>
           <tr>
-            <th>Atendimento</th>
-            <th>Data Início</th>
-            <th>Data Fim</th>
             <th>Nome do Paciente</th>
             <th>Convênio</th>
-            <th>Status Internação</th>
-            <th>Acomodação</th>
+            <th>Data de Nascimento</th>
+            <th>CPF</th>
           </tr>
         </thead>
         <tbody *ngIf="pacientes.length > 0">
           <tr *ngFor="let paciente of pacientes">
-            <td>{{ paciente.atendimento }}</td>
-            <td>{{ paciente.dataInicio }}</td>
-            <td>{{ paciente.dataFim }}</td>
-            <td>{{ paciente.nomePaciente }}</td>
+            <td>{{ paciente.nome }}</td>
             <td>{{ paciente.convenio }}</td>
-            <td>{{ paciente.statusInternacaoDescricao }}</td>
-            <td>{{ paciente.acomodacaoDescricao }}</td>
+            <td>{{ paciente.dataNascimento }}</td>
+            <td>{{ paciente.cpf }}</td>
           </tr>
         </tbody>
       </table>
