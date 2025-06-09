@@ -34,18 +34,8 @@
           />
         </div>
 
-        <div class="input">
-          <label for="convenio">Convênio</label>
-          <select [(ngModel)]="convenio" name="convenio">
-            <option value="unimed">Unimed</option>
-            <option value="bradesco">Bradesco</option>
-            <option value="sulamerica">SulAmérica</option>
-            <option value="amil">Amil</option>
-          </select>
-        </div>
-
         <div class="btn-container">
-          <button class="btn-buscar" (click)="postPaciente()">Buscar</button>
+          <button class="btn-buscar" (click)="getPacientes()">Buscar</button>
         </div>
       </div>
     </form>

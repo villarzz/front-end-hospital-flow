@@ -9,7 +9,6 @@ export class PacientesService {
 
   public getPacientes(
   nomePaciente?: string,
-  convenio?: string,
   cpf?: number,
   dataNascimento?: string
 ) {
@@ -17,10 +16,6 @@ export class PacientesService {
 
   if (nomePaciente) {
     params = params.set('nomePaciente', nomePaciente);
-  }
-
-  if (convenio) {
-    params = params.set('convenio', convenio);
   }
 
   if (cpf) {

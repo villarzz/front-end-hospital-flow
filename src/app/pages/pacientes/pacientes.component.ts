@@ -9,7 +9,6 @@ import { PacientesService } from './services/pacientes.service';
 export class PacientesComponent implements OnInit {
   cpf!: number;
   nome!: string;
-  convenio!: string;
   atendimento!: string;
   pacientes: any[] = [];
   dataNascimento!: string;
@@ -22,7 +21,7 @@ export class PacientesComponent implements OnInit {
 
   getPacientes(){
     this._pacientesService
-      .getPacientes(this.nome, this.convenio, this.cpf, this.dataNascimento)
+      .getPacientes(this.nome, this.cpf, this.dataNascimento)
       .subscribe((data) => {
         this.pacientes = data;
       });
