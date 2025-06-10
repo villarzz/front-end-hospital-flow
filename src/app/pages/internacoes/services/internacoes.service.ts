@@ -7,6 +7,27 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class InternacoesService {
   constructor(private http: HttpClient) {}
 
+  public postInternacao(
+    dataInicio: string,
+    dataFim: string,
+    pacienteId: number,
+    acomodacaoId: number,
+    statusInternacaoId: number
+  ){
+    const body = {
+      dataInicio: dataInicio,
+      dataFim: dataFim,
+      pacienteId: pacienteId,
+      acomodacaoId: acomodacaoId,
+      statusInternacaoId: statusInternacaoId,
+    };
+
+    return this.http.post(
+      'https://localhost:7174/api/Internacoes/criar-internacao',
+      body
+    );
+  };
+
   public getInternacoes(
     atendimento?: string,
     nomePaciente?: string,

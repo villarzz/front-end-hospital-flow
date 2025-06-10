@@ -5,6 +5,9 @@
     <form>
       <div class="form-group">
         <div class="input">
+          <label for="pacienteId">Paciente</label>
+        </div>
+        <div class="input">
           <label for="atendimento">Atendimento</label>
           <input
             type="number"
@@ -46,6 +49,9 @@
 
         <div class="btn-container">
           <button class="btn-buscar" (click)="getInternacoes()">Buscar</button>
+          <button class="btn-criar" type="button" (click)="abrirModal()">
+            Nova Internação
+          </button>
         </div>
       </div>
     </form>
@@ -79,5 +85,76 @@
         <p class="error-text">Não foi encontrado nenhum registro!</p>
       </div>
     </div>
+  </div>
+</div>
+<div class="modal-overlay" *ngIf="modalAberta">
+  <div class="modal">
+    <h2>Criar Nova Internação</h2>
+    <form (ngSubmit)="postInternacao()" #formInternacao="ngForm">
+      <div class="input">
+        <label for="dataInicio">Data de Início</label>
+        <input
+          type="text"
+          id="dataInicio"
+          name="dataInicio"
+          mask="d0/M0/0000"
+          placeholder="dd/mm/aaaa"
+          [(ngModel)]="dataInicio"
+          required
+        />
+      </div>
+
+      <div class="input">
+        <label for="dataFim">Data de Fim</label>
+        <input
+          type="text"
+          id="dataFim"
+          name="dataFim"
+          mask="d0/M0/0000"
+          placeholder="dd/mm/aaaa"
+          [(ngModel)]="dataFim"
+        />
+      </div>
+
+      <div class="input">
+        <label for="acomodacaoId">Acomodação</label>
+        <select
+          id="acomodacaoId"
+          name="acomodacaoId"
+          [(ngModel)]="acomodacaoId"
+          required
+        >
+          <option [value]="1">Quarto Individual</option>
+          <option [value]="2">Quarto Duplo</option>
+          <option [value]="3">Enfermaria</option>
+          <option [value]="4">UTI Adulto</option>
+          <option [value]="5">UTI Neonatal</option>
+          <option [value]="6">Sala de Recuperação</option>
+          <option [value]="7">Apartamento Presidencial</option>
+        </select>
+      </div>
+
+      <div class="input">
+        <label for="statusInternacaoId">Status da Internação</label>
+        <select
+          id="statusInternacaoId"
+          name="statusInternacaoId"
+          [(ngModel)]="statusInternacaoId"
+          required
+        >
+          <option [value]="1">Internado</option>
+          <option [value]="2">Alta</option>
+          <option [value]="3">Transferido</option>
+          <option [value]="4">Óbito</option>
+        </select>
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="button" class="btn-cancelar" (click)="fecharModal()">
+          Cancelar
+        </button>
+      </div>
+    </form>
   </div>
 </div>

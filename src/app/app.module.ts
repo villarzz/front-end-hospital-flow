@@ -1,3 +1,4 @@
+import { provideNgxMask } from 'ngx-mask';
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
@@ -9,6 +10,7 @@ import { InternacoesComponent } from './pages/internacoes/internacoes.component'
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PacientesComponent } from './pages/pacientes/pacientes.component';
+
 
 @NgModule({
   declarations: [
@@ -22,10 +24,11 @@ import { PacientesComponent } from './pages/pacientes/pacientes.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideNgxMask()
   ],
   bootstrap: [AppComponent]
 })
