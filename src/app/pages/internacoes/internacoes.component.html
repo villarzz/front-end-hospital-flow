@@ -93,9 +93,14 @@
     <h2>Criar Nova Internação</h2>
     <form (ngSubmit)="postInternacao()" #formInternacao="ngForm">
       <div class="input">
+        <label for="pacientes">Pacientes</label>
+        <select name="pacientes" id=""></select>
+      </div>
+
+      <div class="input">
         <label for="dataInicio">Data de Início</label>
         <input
-          type="text"
+          type="date"
           id="dataInicio"
           name="dataInicio"
           mask="d0/M0/0000"
@@ -108,7 +113,7 @@
       <div class="input">
         <label for="dataFim">Data de Fim</label>
         <input
-          type="text"
+          type="date"
           id="dataFim"
           name="dataFim"
           mask="d0/M0/0000"
