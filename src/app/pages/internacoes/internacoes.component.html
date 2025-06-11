@@ -94,13 +94,17 @@
     <form (ngSubmit)="postInternacao()" #formInternacao="ngForm">
       <div class="input">
         <label for="pacientes">Pacientes</label>
-        <select name="pacientes" id=""></select>
+        <select name="pacientes" id="" [(ngModel)]="pacienteId">
+          <option *ngFor="let paciente of pacientes" [value]="paciente.id">
+            {{ paciente.nome }}
+          </option>
+        </select>
       </div>
 
       <div class="input">
         <label for="dataInicio">Data de Início</label>
         <input
-          type="date"
+          type="text"
           id="dataInicio"
           name="dataInicio"
           mask="d0/M0/0000"
@@ -113,7 +117,7 @@
       <div class="input">
         <label for="dataFim">Data de Fim</label>
         <input
-          type="date"
+          type="text"
           id="dataFim"
           name="dataFim"
           mask="d0/M0/0000"

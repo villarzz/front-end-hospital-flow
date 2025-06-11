@@ -25,6 +25,10 @@ h1 {
   border-radius: 10px;
 }
 
+label{
+  white-space: nowrap;
+}
+
 .input {
   display: flex;
   flex-direction: column;

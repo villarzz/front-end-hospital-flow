@@ -1,17 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class InternacoesService {
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
 
   private formatarData(data: string): string {
-    if (!data) {
-      return '';
-    }
-    const [ano, mes, dia] = data.split('-');
+    if (!data) return '';
+
+    const dateObj = new Date(data);
+
+    const dia = String(dateObj.getDate()).padStart(2, '0');
+    const mes = String(dateObj.getMonth() + 1).padStart(2, '0'); // mês começa do 0
+    const ano = dateObj.getFullYear();
+
     return `${dia}/${mes}/${ano}`;
   }
 
@@ -28,25 +36,23 @@ export class InternacoesService {
     const body = {
       dataInicio: dataInicioFormatada,
       dataFim: dataFimFormatada,
-      pacienteId: pacienteId,
-      acomodacaoId: acomodacaoId,
-      statusInternacaoId: statusInternacaoId,
-    }
+      pacienteId,
+      acomodacaoId,
+      statusInternacaoId,
+    };
 
     const token = localStorage.getItem('token');
 
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
-
-    console.log(headers);
 
     return this.http.post(
       'https://localhost:7174/api/Internacoes/criar-internacao',
       body,
-      { headers }
+      { headers, responseType: 'text' }
     );
-  };
+  }
 
   public getInternacoes(
     atendimento?: string,
@@ -69,10 +75,13 @@ export class InternacoesService {
       params = params.set('statusInternacao', statusInternacao);
     }
 
-    const token = localStorage.getItem('token');
+    let token = '';
+    if (this.document.defaultView?.localStorage) {
+      token = this.document.defaultView.localStorage.getItem('token') || '';
+    }
 
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
 
     return this.http.get<any[]>(

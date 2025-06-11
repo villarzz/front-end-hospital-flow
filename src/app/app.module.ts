@@ -1,16 +1,18 @@
-import { provideNgxMask } from 'ngx-mask';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './pages/login/login.component';
 import { FormsModule } from '@angular/forms';
-import { InternacoesComponent } from './pages/internacoes/internacoes.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './pages/login/login.component';
 import { PacientesComponent } from './pages/pacientes/pacientes.component';
-
+import { SideBarComponent } from './components/side-bar/side-bar.component';
+import { InternacoesComponent } from './pages/internacoes/internacoes.component';
 
 @NgModule({
   declarations: [
@@ -18,18 +20,17 @@ import { PacientesComponent } from './pages/pacientes/pacientes.component';
     LoginComponent,
     InternacoesComponent,
     PacientesComponent,
-    SideBarComponent
+    SideBarComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
     AppRoutingModule,
     HttpClientModule,
   ],
-  providers: [
-    provideClientHydration(),
-    provideNgxMask()
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideClientHydration(), provideNgxMask()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

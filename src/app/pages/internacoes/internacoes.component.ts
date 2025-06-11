@@ -1,3 +1,4 @@
+import Swal from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
 import { InternacoesService } from './services/internacoes.service';
 import { PacientesService } from '../pacientes/services/pacientes.service';
@@ -33,6 +34,7 @@ export class InternacoesComponent implements OnInit {
   abrirModal() {
     this.modalAberta = true;
     this._pacientesService.getPacientes().subscribe((pacientes) => {
+      console.log('Pacientes recebidos:', pacientes);
       this.pacientes = pacientes;
     });
   }
@@ -52,11 +54,25 @@ export class InternacoesComponent implements OnInit {
       )
       .subscribe({
         next: (response) => {
-          console.log('Internação criada com sucesso:', response);
-          this.getInternacoes(); // Refresh the list after posting
+          Swal.fire({
+            icon: 'success',
+            title: 'Internação criada!',
+            text: 'A internação foi registrada com sucesso.',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+          }).then(() => {
+            this.fecharModal(); // <<-- Chama aqui o método que fecha sua modal
+            this.getInternacoes(); // Atualiza lista depois de fechar tudo
+          });
         },
         error: (error) => {
-          console.error('Erro ao criar internação:', error);
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro ao criar internação',
+            text: error?.error?.message || 'Algo deu errado. Tente novamente.',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Fechar',
+          });
         },
       });
   }
@@ -70,6 +86,8 @@ export class InternacoesComponent implements OnInit {
         this.statusInternacao
       )
       .subscribe((data) => {
+        console.log(data);
+
         this.internacoes = data;
       });
   }
