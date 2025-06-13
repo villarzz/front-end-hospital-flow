@@ -80,6 +80,19 @@ input:focus {
   border-bottom: 1px solid #e0e0e0;
 }
 
+#icone-edicao{
+  font-size: 25px;
+}
+
+#icone-apagar{
+  font-size: 25px;
+}
+
+#icone-apagar:hover{
+  color: #f44336; /* Vermelho para o ícone de apagar */
+  cursor: pointer;
+}
+
 .tabela-hospitalar thead {
   background-color: #f5f5f5;
   font-weight: 600;

@@ -10,22 +10,12 @@
         </div>
         <div class="input">
           <label for="atendimento">Atendimento</label>
-          <input
-            type="number"
-            id="atendimento"
-            name="atendimento"
-            [(ngModel)]="atendimento"
-          />
+          <input type="number" id="atendimento" name="atendimento" [(ngModel)]="atendimento" />
         </div>
 
         <div class="input">
           <label for="paciente">Nome do paciente</label>
-          <input
-            type="text"
-            id="paciente"
-            name="paciente"
-            [(ngModel)]="paciente"
-          />
+          <input type="text" id="paciente" name="paciente" [(ngModel)]="paciente" />
         </div>
 
         <div class="input">
@@ -68,6 +58,8 @@
             <th>Convênio</th>
             <th>Status Internação</th>
             <th>Acomodação</th>
+            <th>Editar</th>
+            <th>Finalizar Internação</th>
           </tr>
         </thead>
         <tbody *ngIf="internacoes.length > 0">
@@ -79,6 +71,12 @@
             <td>{{ internacao.convenio }}</td>
             <td>{{ internacao.statusInternacaoDescricao }}</td>
             <td>{{ internacao.acomodacaoDescricao }}</td>
+            <td class="icone-container">
+              <i id="icone-edicao" class="fa-solid fa-pen-to-square" (click)="abrirModalEdicao(internacao)"></i>
+            </td>
+            <td class="icone-container">
+              <i id="icone-apagar" class="fa-solid fa-trash" (click)="excluirInternacao(internacao.id)"></i>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -103,37 +101,19 @@
 
       <div class="input">
         <label for="dataInicio">Data de Início</label>
-        <input
-          type="text"
-          id="dataInicio"
-          name="dataInicio"
-          mask="d0/M0/0000"
-          placeholder="dd/mm/aaaa"
-          [(ngModel)]="dataInicio"
-          required
-        />
+        <input type="text" id="dataInicio" name="dataInicio" mask="d0/M0/0000" placeholder="dd/mm/aaaa"
+          [(ngModel)]="dataInicio" required />
       </div>
 
       <div class="input">
         <label for="dataFim">Data de Fim</label>
-        <input
-          type="text"
-          id="dataFim"
-          name="dataFim"
-          mask="d0/M0/0000"
-          placeholder="dd/mm/aaaa"
-          [(ngModel)]="dataFim"
-        />
+        <input type="text" id="dataFim" name="dataFim" mask="d0/M0/0000" placeholder="dd/mm/aaaa"
+          [(ngModel)]="dataFim" />
       </div>
 
       <div class="input">
         <label for="acomodacaoId">Acomodação</label>
-        <select
-          id="acomodacaoId"
-          name="acomodacaoId"
-          [(ngModel)]="acomodacaoId"
-          required
-        >
+        <select id="acomodacaoId" name="acomodacaoId" [(ngModel)]="acomodacaoId" required>
           <option [value]="1">Quarto Individual</option>
           <option [value]="2">Quarto Duplo</option>
           <option [value]="3">Enfermaria</option>
@@ -146,12 +126,7 @@
 
       <div class="input">
         <label for="statusInternacaoId">Status da Internação</label>
-        <select
-          id="statusInternacaoId"
-          name="statusInternacaoId"
-          [(ngModel)]="statusInternacaoId"
-          required
-        >
+        <select id="statusInternacaoId" name="statusInternacaoId" [(ngModel)]="statusInternacaoId" required>
           <option [value]="1">Internado</option>
           <option [value]="2">Alta</option>
           <option [value]="3">Transferido</option>
@@ -162,6 +137,64 @@
       <div class="modal-actions">
         <button type="submit" class="btn-salvar">Salvar</button>
         <button type="button" class="btn-cancelar" (click)="fecharModal()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="modalAbertaEdicao">
+  <div class="modal">
+    <h2>Editar Internação</h2>
+    <form (ngSubmit)="putInternacao()" #formInternacao="ngForm">
+      <div class="input">
+        <label for="pacientes">Pacientes</label>
+        <select name="pacientes" id="" [(ngModel)]="pacienteId">
+          <option *ngFor="let paciente of pacientes" [value]="paciente.id">
+            {{ paciente.nome }}
+          </option>
+        </select>
+      </div>
+
+      <div class="input">
+        <label for="dataInicio">Data de Início</label>
+        <input type="text" id="dataInicio" name="dataInicio" mask="d0/M0/0000" placeholder="dd/mm/aaaa"
+          [(ngModel)]="dataInicio" required />
+      </div>
+
+      <div class="input">
+        <label for="dataFim">Data de Fim</label>
+        <input type="text" id="dataFim" name="dataFim" mask="d0/M0/0000" placeholder="dd/mm/aaaa"
+          [(ngModel)]="dataFim" />
+      </div>
+
+      <div class="input">
+        <label for="acomodacaoId">Acomodação</label>
+        <select id="acomodacaoId" name="acomodacaoId" [(ngModel)]="acomodacaoId" required>
+          <option [value]="1">Quarto Individual</option>
+          <option [value]="2">Quarto Duplo</option>
+          <option [value]="3">Enfermaria</option>
+          <option [value]="4">UTI Adulto</option>
+          <option [value]="5">UTI Neonatal</option>
+          <option [value]="6">Sala de Recuperação</option>
+          <option [value]="7">Apartamento Presidencial</option>
+        </select>
+      </div>
+
+      <div class="input">
+        <label for="statusInternacaoId">Status da Internação</label>
+        <select id="statusInternacaoId" name="statusInternacaoId" [(ngModel)]="statusInternacaoId" required>
+          <option [value]="1">Internado</option>
+          <option [value]="2">Alta</option>
+          <option [value]="3">Transferido</option>
+          <option [value]="4">Óbito</option>
+        </select>
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="button" class="btn-cancelar" (click)="fecharModalEdicao()">
           Cancelar
         </button>
       </div>
