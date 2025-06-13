@@ -10,8 +10,8 @@ import { PacientesService } from '../pacientes/services/pacientes.service';
 })
 export class InternacoesComponent implements OnInit {
   constructor(
-    private readonly internacoesService: InternacoesService,
-    private readonly _pacientesService: PacientesService
+    private readonly _pacientesService: PacientesService,
+    private readonly internacoesService: InternacoesService
   ) { }
 
   dataFim!: string;
