@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PacientesService } from './services/pacientes.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pacientes',
@@ -18,13 +19,13 @@ export class PacientesComponent implements OnInit {
   convenioPaciente!: string;
   dataNascimentoPaciente!: string;
 
-  constructor(private readonly _pacientesService: PacientesService) {}
+  constructor(private readonly _pacientesService: PacientesService) { }
 
   ngOnInit(): void {
     this.getPacientes();
   }
 
-  getPacientes(){
+  getPacientes() {
     this._pacientesService
       .getPacientes(this.nome, this.cpf, this.dataNascimento)
       .subscribe((data) => {
@@ -32,7 +33,7 @@ export class PacientesComponent implements OnInit {
       });
   }
 
-  abrirModal(){
+  abrirModal() {
     this.modal = true;
   }
 
@@ -40,18 +41,21 @@ export class PacientesComponent implements OnInit {
     this.modal = false;
   }
 
-  postPaciente(){
-    console.log(this.nomePaciente);
-    console.log(this.cpfPaciente);
-    console.log(this.dataNascimentoPaciente);
-    console.log(this.convenioPaciente);
-
+  postPaciente() {
     this._pacientesService
       .postPaciente(this.nomePaciente, this.dataNascimentoPaciente, this.cpfPaciente, this.convenioPaciente)
       .subscribe({
-        next:()=>{
-          this.getPacientes();
-          this.fecharModal();
+        next: () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Paciente criadao!',
+            text: 'O paciente foi registrada com sucesso.',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+          }).then(() => {
+            this.fecharModal();
+            this.getPacientes();
+          });
         }
       })
   }
