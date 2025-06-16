@@ -8,10 +8,15 @@ import { PacientesService } from './services/pacientes.service';
 })
 export class PacientesComponent implements OnInit {
   cpf!: number;
+  modal = false;
   nome!: string;
+  cpfPaciente!: number;
   atendimento!: string;
+  nomePaciente!: string;
   pacientes: any[] = [];
   dataNascimento!: string;
+  convenioPaciente!: string;
+  dataNascimentoPaciente!: string;
 
   constructor(private readonly _pacientesService: PacientesService) {}
 
@@ -27,7 +32,27 @@ export class PacientesComponent implements OnInit {
       });
   }
 
-  postPaciente(){
+  abrirModal(){
+    this.modal = true;
+  }
 
+  fecharModal() {
+    this.modal = false;
+  }
+
+  postPaciente(){
+    console.log(this.nomePaciente);
+    console.log(this.cpfPaciente);
+    console.log(this.dataNascimentoPaciente);
+    console.log(this.convenioPaciente);
+
+    this._pacientesService
+      .postPaciente(this.nomePaciente, this.dataNascimentoPaciente, this.cpfPaciente, this.convenioPaciente)
+      .subscribe({
+        next:()=>{
+          this.getPacientes();
+          this.fecharModal();
+        }
+      })
   }
 }

@@ -1,6 +1,6 @@
+import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { DOCUMENT } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -10,18 +10,6 @@ export class InternacoesService {
     private http: HttpClient,
     @Inject(DOCUMENT) private document: Document
   ) { }
-
-  private formatarData(data: string): string {
-    if (!data) return '';
-
-    const dateObj = new Date(data);
-
-    const dia = String(dateObj.getDate()).padStart(2, '0');
-    const mes = String(dateObj.getMonth() + 1).padStart(2, '0'); // mês começa do 0
-    const ano = dateObj.getFullYear();
-
-    return `${dia}/${mes}/${ano}`;
-  }
 
   private formatarDataDdMmYyyy(data: string): string {
     if (data?.length !== 8) return data; // Retorna como está se não tiver 8 dígitos
@@ -33,7 +21,7 @@ export class InternacoesService {
 
   public postInternacao(
     dataInicio: string,
-    dataFim: string, 
+    dataFim: string,
     pacienteId: number,
     acomodacaoId: number,
     statusInternacaoId: number
