@@ -91,3 +91,39 @@
     </form>
   </div>
 </div>
+
+<div class="modal-overlay" *ngIf="modalEdicao">
+  <div class="modal">
+    <h2>Editar internação</h2>
+    <form (ngSubmit)="postPaciente()">
+      <div class="input">
+        <label for="pacientes">Nome Completo do Paciente</label>
+        <input name="pacientes" id="nomePaciente" [(ngModel)]="nomePaciente" disabled/>
+      </div>
+
+      <div class="input">
+        <label for="dataNascimentoPaciente">Data de Nascimento do Paciente</label>
+        <input type="text" id="dataNascimentoPaciente" name="dataNascimentoPaciente" mask="d0/M0/0000"
+          placeholder="dd/mm/aaaa" [(ngModel)]="dataNascimentoPaciente" required disabled/>
+      </div>
+
+      <div class="input">
+        <label for="dataFim">CPF do Paciente</label>
+        <input type="text" id="cpf" name="cpf" mask="000.000.000-00" placeholder="000.000.000-00"
+          [(ngModel)]="cpfPaciente" disabled/>
+      </div>
+
+      <div class="input">
+        <label for="convenio">Convênio do Paciente</label>
+        <input type="text" id="convenio" name="convenio" [(ngModel)]="convenioPaciente" disabled/>
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="button" class="btn-cancelar" (click)="fecharModal()">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

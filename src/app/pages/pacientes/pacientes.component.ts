@@ -1,6 +1,6 @@
+import Swal from 'sweetalert2';
 import { Component, OnInit } from '@angular/core';
 import { PacientesService } from './services/pacientes.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-pacientes',
@@ -11,6 +11,7 @@ export class PacientesComponent implements OnInit {
   cpf!: number;
   modal = false;
   nome!: string;
+  modalEdicao = false;
   cpfPaciente!: number;
   atendimento!: string;
   nomePaciente!: string;
@@ -25,20 +26,28 @@ export class PacientesComponent implements OnInit {
     this.getPacientes();
   }
 
-  getPacientes() {
-    this._pacientesService
-      .getPacientes(this.nome, this.cpf, this.dataNascimento)
-      .subscribe((data) => {
-        this.pacientes = data;
-      });
-  }
-
   abrirModal() {
     this.modal = true;
   }
 
   fecharModal() {
     this.modal = false;
+  }
+
+  abrirModalEdicao() {
+    this.modalEdicao = true;
+  }
+
+  fecharModalEdicao() {
+    this.modalEdicao = false;
+  }
+
+  getPacientes() {
+    this._pacientesService
+      .getPacientes(this.nome, this.cpf, this.dataNascimento)
+      .subscribe((data) => {
+        this.pacientes = data;
+      });
   }
 
   postPaciente() {
