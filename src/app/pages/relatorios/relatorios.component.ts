@@ -1,114 +1,50 @@
 import { Component, OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { PacientesService } from '../pacientes/services/pacientes.service';
+import { RelatoriosService } from './services/relatorios.service';
 
 @Component({
   selector: 'app-relatorios',
   templateUrl: './relatorios.component.html',
-  styleUrl: './relatorios.component.css'
+  styleUrl: './relatorios.component.css',
 })
-export class RelatoriosComponent implements OnInit {
-  cpf!: number;
-  modal = false;
-  nome!: string;
-  modalEdicao = false;
-  cpfPaciente!: number;
-  atendimento!: string;
-  nomePaciente!: string;
-  pacientes: any[] = [];
-  dataNascimento!: string;
-  convenioPaciente!: string;
-  pacienteIdEdicao!: number;
-  cpfPacienteEdicao!: string;
-  nomePacienteEdicao!: string;
-  convenioPacienteEdicao!: string;
-  dataNascimentoPaciente!: string;
-  dataNascimentoPacienteEdicao!: string;
+export class RelatoriosComponent {
+  constructor(private relatoriosService: RelatoriosService) {}
 
-  constructor(private readonly _pacientesService: PacientesService) { }
+  convenio: string = '';
+  atendimento: string = '';
+  nomePaciente: string = '';
+  statusInternacao: string = '';
 
-  ngOnInit(): void {
-    this.getPacientes();
-  }
-
-  abrirModal() {
-    this.modal = true;
-  }
-
-  fecharModal() {
-    this.modal = false;
-  }
-
-  abrirModalEdicao(internacao: any) {
-    this.modalEdicao = true;
-    this.nomePacienteEdicao = internacao.nome;
-    this.dataNascimentoPacienteEdicao = internacao.dataNascimento;
-    this.cpfPacienteEdicao = internacao.cpf;
-    this.convenioPacienteEdicao = internacao.convenio;
-  }
-
-  fecharModalEdicao() {
-    this.modalEdicao = false;
-  }
-
-  getPacientes() {
-    this._pacientesService
-      .getPacientes(this.nome, this.cpf, this.dataNascimento)
+  gerarRelatorioDeInternacoes() {
+    this.relatoriosService
+      .gerarRelatorioDeInternacoes(
+        this.atendimento,
+        this.nomePaciente,
+        this.convenio,
+        this.statusInternacao
+      )
       .subscribe({
-        next: (pacientes) => {
-          this.pacientes = pacientes;
+        next: (response) => {
+          const blob = new Blob([response], {
+            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+          });
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'relatorio_internacoes.xlsx';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);
         },
         error: (error) => {
           Swal.fire({
             icon: 'error',
-            title: 'Erro ao buscar pacientes',
-            text: error.message,
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK',
-          });
-          if (error.status === 401){
-            window.location.href = '/login';
-          }
-        },
-      })
-  }
-
-  postPaciente() {
-    this._pacientesService
-      .postPaciente(this.nomePaciente, this.dataNascimentoPaciente, this.cpfPaciente, this.convenioPaciente)
-      .subscribe({
-        next: () => {
-          Swal.fire({
-            icon: 'success',
-            title: 'Paciente criadao!',
-            text: 'O paciente foi registrada com sucesso.',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK',
-          }).then(() => {
-            this.fecharModal();
-            this.getPacientes();
-          });
-        },
-      })
-  }
-
-  putPaciente(){
-    this._pacientesService
-      .putPaciente(this.pacienteIdEdicao, this.cpfPacienteEdicao, this.nomePacienteEdicao, this.dataNascimentoPacienteEdicao, this.convenioPacienteEdicao)
-      .subscribe({
-        next: () => {
-          Swal.fire({
-            icon: 'success',
-            title: 'Paciente editado!',
-            text: 'O paciente foi editado com sucesso.',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK',
-          }).then(() => {
-            this.fecharModalEdicao();
-            this.getPacientes();
+            title: 'Erro ao gerar relatório',
+            text: error.error || 'Ocorreu um erro ao gerar o relatório.',
           });
         },
       });
   }
 }
-

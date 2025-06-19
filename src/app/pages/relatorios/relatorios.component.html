@@ -9,23 +9,57 @@
           <div class="inputs-container">
             <div class="form-group">
               <label class="label" for="atendimento">Atendimento</label>
-              <input type="text" id="atendimento" name="atendimento" class="form-control">
+              <input
+                type="text"
+                id="atendimento"
+                name="atendimento"
+                class="form-control"
+                [(ngModel)]="atendimento"
+                required
+              />
             </div>
             <div class="form-group">
               <label class="label" for="nomePaciente">Nome do Paciente</label>
-              <input type="text" id="nomePaciente" name="nomePaciente" class="form-control">
+              <input
+                type="text"
+                id="nomePaciente"
+                name="nomePaciente"
+                class="form-control"
+                [(ngModel)]="nomePaciente"
+                required
+              />
             </div>
             <div class="form-group">
               <label class="label" for="convenio">Convênio</label>
-              <input type="text" id="convenio" name="convenio" class="form-control">
+              <input
+                type="text"
+                id="convenio"
+                name="convenio"
+                class="form-control"
+                [(ngModel)]="convenio"
+              />
             </div>
             <div class="form-group">
-              <label class="label" for="statusInternacao">Status Internação</label>
-              <input type="text" id="statusInternacao" name="statusInternacao" class="form-control">
+              <label class="label" for="statusInternacao"
+                >Status Internação</label
+              >
+              <input
+                type="text"
+                id="statusInternacao"
+                name="statusInternacao"
+                class="form-control"
+                [(ngModel)]="statusInternacao"
+              />
             </div>
           </div>
           <div class="flex">
-            <button type="submit" class="btn btn-primary">Buscar</button>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              (click)="gerarRelatorioDeInternacoes()"
+            >
+              Buscar
+            </button>
           </div>
         </form>
       </div>
