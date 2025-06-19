@@ -13,6 +13,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { PacientesComponent } from './pages/pacientes/pacientes.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { InternacoesComponent } from './pages/internacoes/internacoes.component';
+import { RelatoriosComponent } from './pages/relatorios/relatorios.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { InternacoesComponent } from './pages/internacoes/internacoes.component'
     InternacoesComponent,
     PacientesComponent,
     SideBarComponent,
+    RelatoriosComponent,
   ],
   imports: [
     BrowserModule,
