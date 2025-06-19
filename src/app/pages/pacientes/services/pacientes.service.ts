@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PacientesService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private formatarDataDdMmYyyy(data: string): string {
     if (data?.length !== 8) return data; // Retorna como está se não tiver 8 dígitos
@@ -37,7 +37,7 @@ export class PacientesService {
     const token = localStorage.getItem('token');
 
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
 
     return this.http.get<any[]>(
@@ -46,23 +46,56 @@ export class PacientesService {
     );
   }
 
-  public postPaciente(nomePaciente:string, dataNascimentoPaciente:string, cpfPaciente:number, convenioPaciente:string) {
+  public postPaciente(
+    nomePaciente: string,
+    dataNascimentoPaciente: string,
+    cpfPaciente: number,
+    convenioPaciente: string
+  ) {
     dataNascimentoPaciente = this.formatarDataDdMmYyyy(dataNascimentoPaciente);
     const token = localStorage.getItem('token');
 
     const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     });
 
     const body = {
       nome: nomePaciente,
       dataNascimento: dataNascimentoPaciente,
       cpf: cpfPaciente,
-      convenio:convenioPaciente,
+      convenio: convenioPaciente,
     };
 
     return this.http.post(
       'https://localhost:7174/api/Paciente/adicionar-paciente',
+      body,
+      { headers, responseType: 'text' }
+    );
+  }
+
+  public putPaciente(
+    id: number,
+    nomePaciente: string,
+    cpfPaciente: string,
+    dataNascimentoPaciente: string,
+    convenioPaciente: string
+  ) {
+    dataNascimentoPaciente = this.formatarDataDdMmYyyy(dataNascimentoPaciente);
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    const body = {
+      cpf: cpfPaciente,
+      nome: nomePaciente,
+      dataNascimento: dataNascimentoPaciente,
+      convenio: convenioPaciente,
+    };
+
+    return this.http.put(
+      'https://localhost:7174/api/Paciente/editar-paciente',
       body,
       { headers, responseType: 'text' }
     );

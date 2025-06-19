@@ -46,7 +46,9 @@
             <td>{{ paciente.convenio }}</td>
             <td>{{ paciente.dataNascimento }}</td>
             <td>{{ paciente.cpf }}</td>
-            <td><i class="fa-solid fa-pen-to-square"></i></td>
+            <td><button (click)="abrirModalEdicao(paciente)">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </button></td>
           </tr>
         </tbody>
       </table>
@@ -98,28 +100,28 @@
     <form (ngSubmit)="postPaciente()">
       <div class="input">
         <label for="pacientes">Nome Completo do Paciente</label>
-        <input name="pacientes" id="nomePaciente" [(ngModel)]="nomePaciente" disabled/>
+        <input name="pacientes" id="nomePaciente" [(ngModel)]="nomePacienteEdicao" disabled/>
       </div>
 
       <div class="input">
         <label for="dataNascimentoPaciente">Data de Nascimento do Paciente</label>
         <input type="text" id="dataNascimentoPaciente" name="dataNascimentoPaciente" mask="d0/M0/0000"
-          placeholder="dd/mm/aaaa" [(ngModel)]="dataNascimentoPaciente" required disabled/>
+          placeholder="dd/mm/aaaa" [(ngModel)]="dataNascimentoPacienteEdicao" required disabled/>
       </div>
 
       <div class="input">
         <label for="dataFim">CPF do Paciente</label>
         <input type="text" id="cpf" name="cpf" mask="000.000.000-00" placeholder="000.000.000-00"
-          [(ngModel)]="cpfPaciente" disabled/>
+          [(ngModel)]="cpfPacienteEdicao" disabled/>
       </div>
 
       <div class="input">
         <label for="convenio">Convênio do Paciente</label>
-        <input type="text" id="convenio" name="convenio" [(ngModel)]="convenioPaciente" disabled/>
+        <input type="text" id="convenio" name="convenio" [(ngModel)]="convenioPacienteEdicao"/>
       </div>
 
       <div class="modal-actions">
-        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="submit" class="btn-salvar" (click)="putPaciente()">Salvar</button>
         <button type="button" class="btn-cancelar" (click)="fecharModal()">
           Cancelar
         </button>

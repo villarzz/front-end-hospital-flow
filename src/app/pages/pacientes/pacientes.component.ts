@@ -18,7 +18,12 @@ export class PacientesComponent implements OnInit {
   pacientes: any[] = [];
   dataNascimento!: string;
   convenioPaciente!: string;
+  pacienteIdEdicao!: number;
+  cpfPacienteEdicao!: string;
+  nomePacienteEdicao!: string;
+  convenioPacienteEdicao!: string;
   dataNascimentoPaciente!: string;
+  dataNascimentoPacienteEdicao!: string;
 
   constructor(private readonly _pacientesService: PacientesService) { }
 
@@ -34,8 +39,12 @@ export class PacientesComponent implements OnInit {
     this.modal = false;
   }
 
-  abrirModalEdicao() {
+  abrirModalEdicao(internacao: any) {
     this.modalEdicao = true;
+    this.nomePacienteEdicao = internacao.nome;
+    this.dataNascimentoPacienteEdicao = internacao.dataNascimento;
+    this.cpfPacienteEdicao = internacao.cpf;
+    this.convenioPacienteEdicao = internacao.convenio;
   }
 
   fecharModalEdicao() {
@@ -81,5 +90,24 @@ export class PacientesComponent implements OnInit {
           });
         },
       })
+  }
+
+  putPaciente(){
+    this._pacientesService
+      .putPaciente(this.pacienteIdEdicao, this.cpfPacienteEdicao, this.nomePacienteEdicao, this.dataNascimentoPacienteEdicao, this.convenioPacienteEdicao)
+      .subscribe({
+        next: () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Paciente editado!',
+            text: 'O paciente foi editado com sucesso.',
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+          }).then(() => {
+            this.fecharModalEdicao();
+            this.getPacientes();
+          });
+        },
+      });
   }
 }

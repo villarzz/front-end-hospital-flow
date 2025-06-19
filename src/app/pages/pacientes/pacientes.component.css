@@ -54,6 +54,14 @@ input:focus {
   box-shadow: 0 0 0 4px rgba(77, 166, 255, 0.2);
 }
 
+.input input:disabled {
+  background-color: #edf2f7; /* cinza bem claro */
+  color: #a0aec0; /* cinza médio para o texto */
+  border: 1px solid #cbd5e0; /* borda sutil */
+  cursor: not-allowed;
+  opacity: 1; /* mantém a opacidade legível */
+}
+
 .tabela-container {
   margin-top: 20px;
   padding: 20px;
