@@ -142,8 +142,22 @@ export class InternacoesComponent implements OnInit {
         this.convenio,
         this.statusInternacao
       )
-      .subscribe((data) => {
-        this.internacoes = data;
+      .subscribe({
+        next: (response) => {
+          this.internacoes = response;
+        },
+        error: (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro ao buscar internações',
+            text: error?.error?.message || 'Algo deu errado. Tente novamente.',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Fechar',
+          });
+          if(error.status === 401) {
+            window.location.href = '/login';
+          }
+        },
       });
   }
 

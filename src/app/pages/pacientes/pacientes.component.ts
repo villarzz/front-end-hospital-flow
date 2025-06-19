@@ -45,9 +45,23 @@ export class PacientesComponent implements OnInit {
   getPacientes() {
     this._pacientesService
       .getPacientes(this.nome, this.cpf, this.dataNascimento)
-      .subscribe((data) => {
-        this.pacientes = data;
-      });
+      .subscribe({
+        next: (pacientes) => {
+          this.pacientes = pacientes;
+        },
+        error: (error) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Erro ao buscar pacientes',
+            text: error.message,
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'OK',
+          });
+          if (error.status === 401){
+            window.location.href = '/login';
+          }
+        },
+      })
   }
 
   postPaciente() {
@@ -65,7 +79,7 @@ export class PacientesComponent implements OnInit {
             this.fecharModal();
             this.getPacientes();
           });
-        }
+        },
       })
   }
 }
