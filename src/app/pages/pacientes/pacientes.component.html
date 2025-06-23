@@ -6,7 +6,7 @@
       <div class="form-group">
         <div class="input">
           <label for="nome">Nome</label>
-          <input type="text" id="nome" name="nome" [(ngModel)]="nome" />
+          <input type="text" id="nomeBusca" name="nome" [(ngModel)]="nome" />
         </div>
 
         <div class="input">
@@ -20,8 +20,8 @@
         </div>
 
         <div class="btn-container">
-          <button class="btn-buscar" (click)="getPacientes()">Buscar</button>
-          <button class="btn-adicionar" (click)="abrirModal()">
+          <button class="btn-buscar" (click)="getPacientes()" id="buscar-paciente">Buscar</button>
+          <button class="btn-adicionar" (click)="abrirModal()" id="adicionar-paciente">
             Adicionar paciente
             <i class="fa-solid fa-circle-plus"></i>
           </button>
@@ -46,7 +46,7 @@
             <td>{{ paciente.convenio }}</td>
             <td>{{ paciente.dataNascimento }}</td>
             <td>{{ paciente.cpf }}</td>
-            <td><button (click)="abrirModalEdicao(paciente)">
+            <td><button (click)="abrirModalEdicao(paciente)" id="botao-editar">
               <i class="fa-solid fa-pen-to-square"></i>
             </button></td>
           </tr>
@@ -75,7 +75,7 @@
 
       <div class="input">
         <label for="dataFim">CPF do Paciente</label>
-        <input type="text" id="cpf" name="cpf" mask="000.000.000-00" placeholder="000.000.000-00"
+        <input type="text" id="cpfCadastro" name="cpf" mask="000.000.000-00" placeholder="000.000.000-00"
           [(ngModel)]="cpfPaciente" />
       </div>
 
@@ -85,7 +85,7 @@
       </div>
 
       <div class="modal-actions">
-        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="submit" class="btn-salvar" id="salvar">Salvar</button>
         <button type="button" class="btn-cancelar" (click)="fecharModal()">
           Cancelar
         </button>
@@ -100,28 +100,28 @@
     <form (ngSubmit)="postPaciente()">
       <div class="input">
         <label for="pacientes">Nome Completo do Paciente</label>
-        <input name="pacientes" id="nomePaciente" [(ngModel)]="nomePacienteEdicao" disabled/>
+        <input name="pacientes" id="nomePacienteEdicao" [(ngModel)]="nomePacienteEdicao" disabled/>
       </div>
 
       <div class="input">
         <label for="dataNascimentoPaciente">Data de Nascimento do Paciente</label>
-        <input type="text" id="dataNascimentoPaciente" name="dataNascimentoPaciente" mask="d0/M0/0000"
+        <input type="text" id="dataNascimentoPacienteEdicao" name="dataNascimentoPaciente" mask="d0/M0/0000"
           placeholder="dd/mm/aaaa" [(ngModel)]="dataNascimentoPacienteEdicao" required disabled/>
       </div>
 
       <div class="input">
         <label for="dataFim">CPF do Paciente</label>
-        <input type="text" id="cpf" name="cpf" mask="000.000.000-00" placeholder="000.000.000-00"
+        <input type="text" id="cpf" name="cpfEdicao" mask="000.000.000-00" placeholder="000.000.000-00"
           [(ngModel)]="cpfPacienteEdicao" disabled/>
       </div>
 
       <div class="input">
         <label for="convenio">Convênio do Paciente</label>
-        <input type="text" id="convenio" name="convenio" [(ngModel)]="convenioPacienteEdicao"/>
+        <input type="text" id="convenioEdicao" name="convenio" [(ngModel)]="convenioPacienteEdicao"/>
       </div>
 
       <div class="modal-actions">
-        <button type="submit" class="btn-salvar" (click)="putPaciente()">Salvar</button>
+        <button type="submit" class="btn-salvar" (click)="putPaciente()" id="salvar-edicao">Salvar</button>
         <button type="button" class="btn-cancelar" (click)="fecharModalEdicao()">
           Cancelar
         </button>

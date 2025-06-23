@@ -44,7 +44,7 @@ export class InternacoesService {
     });
 
     return this.http.post(
-      'https://localhost:7174/api/Internacoes/criar-internacao',
+      'http://localhost:5240/api/Internacoes/criar-internacao',
       body,
       { headers, responseType: 'text' }
     );
@@ -77,7 +77,7 @@ export class InternacoesService {
     });
 
     return this.http.put(
-      'https://localhost:7174/api/Internacoes/atualizar-internacao',
+      'http://localhost:5240/api/Internacoes/atualizar-internacao',
       body,
       { headers, responseType: 'text' }
     );
@@ -114,7 +114,7 @@ export class InternacoesService {
     });
 
     return this.http.get<any[]>(
-      'https://localhost:7174/api/Internacoes/obter-internacoes',
+      'http://localhost:5240/api/Internacoes/obter-internacoes',
       { params, headers }
     );
   }
@@ -127,7 +127,7 @@ export class InternacoesService {
     });
 
     return this.http.delete(
-      `https://localhost:7174/api/Internacoes/deletar-internacao/${id}`,
+      `http://localhost:5240/api/Internacoes/deletar-internacao/${id}`,
       { headers, responseType: 'text' }
     )
   }

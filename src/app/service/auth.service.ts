@@ -13,7 +13,7 @@ export class AuthService {
     senha: string
   ): Observable<{ token: string }> {
     return this.http.post<{ token: string }>(
-      'https://localhost:7174/api/auth/login',
+      'http://localhost:5240/api/auth/login',
       {
         nomeUsuario: usuario,
         senha,

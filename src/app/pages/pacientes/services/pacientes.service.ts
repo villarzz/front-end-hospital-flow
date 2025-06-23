@@ -41,7 +41,7 @@ export class PacientesService {
     });
 
     return this.http.get<any[]>(
-      'https://localhost:7174/api/Paciente/obter-pacientes',
+      'http://localhost:5240/api/Paciente/obter-pacientes',
       { params, headers }
     );
   }
@@ -67,7 +67,7 @@ export class PacientesService {
     };
 
     return this.http.post(
-      'https://localhost:7174/api/Paciente/adicionar-paciente',
+      'http://localhost:5240/api/Paciente/adicionar-paciente',
       body,
       { headers, responseType: 'text' }
     );
@@ -95,7 +95,7 @@ export class PacientesService {
     };
 
     return this.http.put(
-      'https://localhost:7174/api/Paciente/editar-paciente',
+      'http://localhost:5240/api/Paciente/editar-paciente',
       body,
       { headers, responseType: 'text' }
     );

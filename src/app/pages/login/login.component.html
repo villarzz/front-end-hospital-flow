@@ -11,14 +11,14 @@
       <input type="text" id="usuario" [(ngModel)]="usuario" class="input" placeholder="Digite seu usuário" />
     </div>
     <div class="input-container">
-      <label for="usuario">Senha</label>
-      <input type="password" id="usuario" [(ngModel)]="senha" class="input" placeholder="Digite sua senha" />
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" [(ngModel)]="senha" class="input" placeholder="Digite sua senha" />
     </div>
     <div class="esqueceu-senha">
       <p>Esqueceu sua senha?</p>
     </div>
     <div class="button-container">
-      <button (click)="entrar()">Entrar</button>
+      <button (click)="entrar()" id="login-button">Entrar</button>
     </div>
   </div>
 </div>

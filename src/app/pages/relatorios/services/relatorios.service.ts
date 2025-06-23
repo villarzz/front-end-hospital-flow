@@ -39,7 +39,7 @@ export class RelatoriosService {
       .set('statusInternacao', statusInternacao);
 
     return this.http.get(
-      'https://localhost:7174/api/Relatorios/relatorio-internacoes',
+      'http://localhost:5240/api/Relatorios/relatorio-internacoes',
       {
         headers,
         params,

@@ -6,7 +6,7 @@
       <div class="form-group">
         <div class="input">
           <label for="paciente">Paciente</label>
-          <input type="text" name="paciente" [(ngModel)]="paciente" />
+          <input type="text" name="paciente" [(ngModel)]="paciente" id="nomePaciente"/>
         </div>
         <div class="input">
           <label for="atendimento">Atendimento</label>
@@ -39,8 +39,8 @@
         </div>
 
         <div class="btn-container">
-          <button class="btn-buscar" (click)="getInternacoes()">Buscar</button>
-          <button class="btn-criar" type="button" (click)="abrirModal()">
+          <button class="btn-buscar" (click)="getInternacoes()" id="btn-buscar-internacao">Buscar</button>
+          <button class="btn-criar" type="button" (click)="abrirModal()" id="btn-nova-internacao">
             Nova Internação
           </button>
         </div>
@@ -92,7 +92,7 @@
     <form (ngSubmit)="postInternacao()" #formInternacao="ngForm">
       <div class="input">
         <label for="pacientes">Pacientes</label>
-        <select name="pacientes" id="" [(ngModel)]="pacienteId">
+        <select name="pacientes" id="paciente" [(ngModel)]="pacienteId">
           <option *ngFor="let paciente of pacientes" [value]="paciente.id">
             {{ paciente.nome }}
           </option>
@@ -135,7 +135,7 @@
       </div>
 
       <div class="modal-actions">
-        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="submit" class="btn-salvar" id="btn-salvar-internacao">Salvar</button>
         <button type="button" class="btn-cancelar" (click)="fecharModal()">
           Cancelar
         </button>
@@ -164,8 +164,8 @@
       </div>
 
       <div class="input">
-        <label for="dataFim">Data de Fim</label>
-        <input type="text" id="dataFim" name="dataFim" mask="d0/M0/0000" placeholder="dd/mm/aaaa"
+        <label for="dataFimEdicao">Data de Fim</label>
+        <input type="text" id="dataFimEdicao" name="dataFim" mask="d0/M0/0000" placeholder="dd/mm/aaaa"
           [(ngModel)]="dataFim" />
       </div>
 
@@ -193,7 +193,7 @@
       </div>
 
       <div class="modal-actions">
-        <button type="submit" class="btn-salvar">Salvar</button>
+        <button type="submit" class="btn-salvar" id="btn-editar-internacao">Salvar</button>
         <button type="button" class="btn-cancelar" (click)="fecharModalEdicao()">
           Cancelar
         </button>

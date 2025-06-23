@@ -80,7 +80,7 @@ export class PacientesComponent implements OnInit {
         next: () => {
           Swal.fire({
             icon: 'success',
-            title: 'Paciente criadao!',
+            title: 'Paciente criado!',
             text: 'O paciente foi registrada com sucesso.',
             confirmButtonColor: '#3085d6',
             confirmButtonText: 'OK',
