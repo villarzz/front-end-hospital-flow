@@ -43,7 +43,7 @@
               <label class="label" for="statusInternacao"
                 >Status Internação</label
               >
-              <select id="statusInternacao" name="statusInternacao" [(ngModel)]="statusInternacao" required>
+              <select id="statusInternacao" name="statusInternacao" [(ngModel)]="statusInternacao" required class="form-control">
                 <option [value]="1">Internado</option>
                 <option [value]="2">Alta</option>
                 <option [value]="3">Transferido</option>
@@ -55,6 +55,7 @@
             <button
               type="submit"
               class="btn btn-primary"
+              id="download-relatorio-internacoes"
               (click)="gerarRelatorioDeInternacoes()"
             >
               Buscar
