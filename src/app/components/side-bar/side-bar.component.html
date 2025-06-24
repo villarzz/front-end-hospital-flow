@@ -3,17 +3,23 @@
     <span class="logo"></span>
     <h2>Hospital Flow</h2>
   </div>
-  <nav class="side-bar__nav">
-    <ul class="side-bar__nav-list">
-      <li>
-        <a href="/internacoes" id="internacoes"> <i class="fas fa-hospital"></i> Internações </a>
-      </li>
-      <li>
-        <a href="/pacientes" id="pacientes"><i class="fas fa-user"></i> Pacientes </a>
-      </li>
-      <li>
-        <a href="/relatorios" id="relatorios"><i class="fa-solid fa-file-medical"></i> Relatórios </a>
-      </li>
-    </ul>
-  </nav>
+  <div class="container">
+    <nav class="side-bar__nav">
+      <ul class="side-bar__nav-list">
+        <li>
+          <a href="/internacoes" id="internacoes"> <i class="fas fa-hospital"></i> Internações </a>
+        </li>
+        <li>
+          <a href="/pacientes" id="pacientes"><i class="fas fa-user"></i> Pacientes </a>
+        </li>
+        <li>
+          <a href="/relatorios" id="relatorios"><i class="fa-solid fa-file-medical"></i> Relatórios </a>
+        </li>
+      </ul>
+    </nav>
+    <button class="icon-container" (click)="logout()">
+      <h4>Sair</h4>
+      <i class="fa-solid fa-door-open" id="icone-sair"></i>
+    </button>
+  </div>
 </div>
