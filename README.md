@@ -24,7 +24,7 @@ Certifique-se de ter o [Node.js](https://nodejs.org/) instalado na sua máquina.
 git clone https://github.com/villarzz/front-end-hospital-flow
 
 ## 📁 Acesse a pasta do projeto
-cd hospital-flow-frontend
+cd front-end-hospital-flow
 
 ## 💾 Instale as dependências
 npm install
