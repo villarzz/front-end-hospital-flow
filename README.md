@@ -1,27 +1,39 @@
-# HospitalFlow
+# 🏥 Hospital Flow - Front-end
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+O **Hospital Flow** é um sistema para controle de internações hospitalares. Desenvolvido em Angular, o sistema permite o gerenciamento completo de pacientes e internações, além da geração de relatórios.
 
-## Development server
+## ⚙️ Funcionalidades
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Cadastro e edição de pacientes  
+- Criação, edição e finalização (exclusão) de internações  
+- Listagem e filtros de internações  
+- Geração de relatórios de internação  
 
-## Code scaffolding
+## 🚀 Tecnologias utilizadas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Angular  
+- TypeScript  
+- RxJS  
+- HTML5/CSS3  
 
-## Build
+## 🖥️ Como executar o projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Certifique-se de ter o [Node.js](https://nodejs.org/) instalado na sua máquina.
 
-## Running unit tests
+## 📥 Clone o repositório
+git clone https://github.com/villarzz/front-end-hospital-flow
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 📁 Acesse a pasta do projeto
+cd hospital-flow-frontend
 
-## Running end-to-end tests
+## 💾 Instale as dependências
+npm install
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🌎 Inicie a aplicação
+ng serve
 
-## Further help
+## 📍Projeto estará disponível em:
+http://localhost:4200
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+##🔗 Integração com a API
+A URL da API está fixa no código. Certifique-se de que o backend do Hospital Flow esteja em execução antes de iniciar o front-end.
