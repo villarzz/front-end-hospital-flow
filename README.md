@@ -35,5 +35,5 @@ ng serve
 ## 📍Projeto estará disponível em:
 http://localhost:4200
 
-##🔗 Integração com a API
+## 🔗 Integração com a API
 A URL da API está fixa no código. Certifique-se de que o backend do Hospital Flow esteja em execução antes de iniciar o front-end.
